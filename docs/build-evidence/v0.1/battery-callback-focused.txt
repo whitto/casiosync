@@ -1,6 +1,0 @@
-Battery notification channel, fragmented reply, 1.5s wait budget, cancellation and overflow guards passed
-.
-----------------------------------------------------------------------
-Ran 1 test in 0.873s
-
-OK
