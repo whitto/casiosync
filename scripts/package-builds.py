@@ -16,7 +16,10 @@ boot_app=tools/'data/packages/esp32/hardware/esp32/3.3.12/tools/partitions/boot_
 configs={
  'node32s':{'chip':'esp32','label':'Node32s','boot_offset':0x1000,'fqbn':'esp32:esp32:node32s:FlashFreq=40,PartitionScheme=no_ota,EraseFlash=none','led':'GPIO2 active high','expected_chip_id':0},
  'esp32c3':{'chip':'esp32c3','label':'ESP32-C3_SuperMini','boot_offset':0,'fqbn':'esp32:esp32:esp32c3:FlashSize=4M,FlashMode=dio,FlashFreq=40,PartitionScheme=huge_app,CDCOnBoot=cdc,EraseFlash=none','led':'GPIO8 active low','expected_chip_id':5}}
-codefiles=sorted(p for folder in ('firmware','libraries','ui') for p in (root/folder).rglob('*') if p.is_file() and (p.suffix in ('.ino','.h','.cpp','.c','.S','.csv','.html') or p.name=='library.properties'))
+# Hash publishable source paths only. Arduino's ignored firmware/build outputs
+# can contain duplicate partition CSVs that are absent from GitHub source ZIPs.
+source_paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z','--','firmware','libraries','ui'],cwd=root).decode().split('\0')
+codefiles=sorted({root/p for p in source_paths if p and (root/p).is_file() and ((root/p).suffix in ('.ino','.h','.cpp','.c','.S','.csv','.html') or (root/p).name=='library.properties')})
 source_hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in codefiles}
 for board,meta in configs.items():
  out=tools/'output/CasioSync_V0_1'/board

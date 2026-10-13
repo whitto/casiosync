@@ -1,0 +1,44 @@
+{
+  "node32s": {
+    "url": "https://github.com/whitto/casiosync/archive/refs/tags/node32s-v0.1-r2.zip",
+    "archive_bytes": 8710354,
+    "archive_sha256": "fce2df7cda3250d1d1d45d9a09ce2bfa8434f9e9e13d5dbbef89b0895eda5ade",
+    "file_count": 8,
+    "file_names": [
+      "README.md",
+      "application.bin",
+      "boot_app0.bin",
+      "bootloader.bin",
+      "factory.bin",
+      "firmware.elf.gz",
+      "manifest.json",
+      "partitions.bin"
+    ],
+    "zip_crc_check_passed": true,
+    "all_file_bytes_match_local_r2_package_and_tag": true,
+    "manifest_component_hashes_match": true,
+    "tag_commit": "0feb52923b47d180f398318112ba7f1eeb322fa6",
+    "physical_board_tested": false
+  },
+  "esp32c3": {
+    "url": "https://github.com/whitto/casiosync/archive/refs/tags/esp32c3-v0.1-r2.zip",
+    "archive_bytes": 8775569,
+    "archive_sha256": "19147312691d819cc392ab0f6824ffbc108407c685b7c5024ed3c5648d9ca840",
+    "file_count": 8,
+    "file_names": [
+      "README.md",
+      "application.bin",
+      "boot_app0.bin",
+      "bootloader.bin",
+      "factory.bin",
+      "firmware.elf.gz",
+      "manifest.json",
+      "partitions.bin"
+    ],
+    "zip_crc_check_passed": true,
+    "all_file_bytes_match_local_r2_package_and_tag": true,
+    "manifest_component_hashes_match": true,
+    "tag_commit": "ed4b110c0fc2d3f4dc002cd21a076f7a4d62b490",
+    "physical_board_tested": false
+  }
+}

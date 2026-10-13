@@ -215,31 +215,63 @@ class BluetoothScheduleTest(unittest.TestCase):
         source=FIRMWARE.read_text()
         commit=balanced_block(source,source.index('const auto commitConfigWithBtTime ='))+';'
         mock=MOCKS.replace('bool reserve(size_t n) { s.reserve(n); return true; }',
-                           'bool reserve(size_t n) { if(denyReserve)return false; s.reserve(n); return true; }')
-        mock=mock.replace('class String {','bool denyReserve=false;\nclass String {',1)
+                           'bool reserve(size_t n) { ++reserveCalls; if(denyReserve || reserveCalls==denyReserveAt)return false; s.reserve(n); return true; }')
+        mock=mock.replace('class String {',
+                          'bool denyReserve=false; int reserveCalls=0,denyReserveAt=0;\nclass String {',1)
         run_cpp(mock+r'''
 constexpr int BT_SYNC_SLOT_COUNT=4;
 String btTimezoneName="Australia/Brisbane";int btTimeOffsetMinutes=0;
+String timezone_name="UTC";
+char ssid[33]="old-network",passwd[65]="old-password";
+int wifiPowerMode=0;bool btAlwaysWaitEnabled=false,wifiCredentialsReconnectPending=false;
+int timezoneApplied=0;void applyTimezone(){++timezoneApplied;}
 bool saveOk=false;int writes=0,rearms=0,failures=0;
+unsigned rearmedSlots=0;
 bool writeConfigNow(){++writes;return saveOk;}
 bool configSaveFailed(const char*){++failures;return false;}
-void resetBluetoothSlotAttempt(int){++rearms;}
+void resetBluetoothSlotAttempt(int slot){assert(slot>=0&&slot<4);++rearms;rearmedSlots|=1U<<slot;}
+void assertOriginal(){
+ assert(btTimezoneName=="Australia/Brisbane"&&btTimeOffsetMinutes==0);
+ assert(timezone_name=="UTC"&&std::strcmp(ssid,"old-network")==0&&std::strcmp(passwd,"old-password")==0);
+ assert(wifiPowerMode==0&&!btAlwaysWaitEnabled&&!wifiCredentialsReconnectPending&&timezoneApplied==0);
+}
 int main(){
- const bool btTimeSettingsChanged=true;
+ bool btTimeSettingsChanged=true;
  char previousBtZone[32]="Australia/Brisbane";
  const int previousBtOffset=0,requestedBtOffset=30;
  const char* nextBtZone="Asia/Tokyo";
+ char previousDisplayZone[32]="UTC";
+ const char* nextDisplayZone="Europe/London";
+ char previousSsid[33]="old-network",previousPassword[65]="old-password";
+ const int previousPowerMode=0,requestedPowerMode=1;
+ const bool previousAlwaysWait=false,requestedAlwaysWait=true;
+ const bool ssidRequested=true,passwordRequested=true;
+ String requestedSsid="new-network",requestedPassword="new-password";
+ bool wifiChanged=true;
 '''+commit+r'''
+ // A grouped save failure rolls back credentials, display/BT time, power and
+ // listen choices together, and never applies/rearms/reconnects unsaved data.
  assert(!commitConfigWithBtTime());
- assert(btTimezoneName=="Australia/Brisbane"&&btTimeOffsetMinutes==0);
- assert(writes==1&&rearms==0);
+ assertOriginal();assert(writes==1&&rearms==0&&rearmedSlots==0);
  denyReserve=true;saveOk=true;assert(!commitConfigWithBtTime());
- assert(writes==1&&rearms==0&&failures==1);
- assert(btTimezoneName=="Australia/Brisbane"&&btTimeOffsetMinutes==0);
- denyReserve=false;assert(commitConfigWithBtTime());
+ assertOriginal();assert(writes==1&&rearms==0&&failures==1);
+ // Failure reserving the second String is equally atomic.
+ denyReserve=false;reserveCalls=0;denyReserveAt=2;
+ assert(!commitConfigWithBtTime());assertOriginal();
+ assert(writes==1&&rearms==0&&failures==2);
+ denyReserveAt=0;assert(commitConfigWithBtTime());
  assert(btTimezoneName=="Asia/Tokyo"&&btTimeOffsetMinutes==30);
- assert(writes==2&&rearms==4);
- std::puts("Actual time-setting commit: storage/allocation rollback and successful four-slot rearm passed");
+ assert(timezone_name=="Europe/London"&&std::strcmp(ssid,"new-network")==0&&std::strcmp(passwd,"new-password")==0);
+ assert(wifiPowerMode==1&&btAlwaysWaitEnabled&&wifiCredentialsReconnectPending&&timezoneApplied==1);
+ assert(writes==2&&rearms==4&&rearmedSlots==15);
+ // Retaining a password and unchanged BT/display time must not trigger BT
+ // rearming or display-time application on another explicit settings save.
+ btTimeSettingsChanged=false;timezone_name=previousDisplayZone;nextDisplayZone=previousDisplayZone;wifiChanged=false;
+ requestedPassword="";std::strcpy(passwd,"old-password");wifiCredentialsReconnectPending=false;
+ assert(commitConfigWithBtTime());
+ assert(std::strcmp(passwd,"old-password")==0&&btTimezoneName=="Asia/Tokyo"&&btTimeOffsetMinutes==30);
+ assert(writes==3&&rearms==4&&timezoneApplied==1&&!wifiCredentialsReconnectPending);
+ std::puts("Actual grouped settings commit: credential/display/BT/power rollback, both allocation failures, durable four-slot rearm and unchanged-setting preservation passed");
 }
 ''')
 

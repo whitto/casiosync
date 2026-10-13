@@ -1,0 +1,11 @@
+{
+  "architecture": "node32s",
+  "elf": "/workspace/.radioclock-tools/output/CasioSync_V0_1/node32s/CasioSync_V0_1.ino.elf",
+  "elf_sha256": "011a562d326730c06daf689f628ec4ca0366b59701115249ca3e676601ed3191",
+  "strong_hook_address": "0x400d7acc",
+  "sdk_caller_address": "0x40118b74",
+  "dispatch_address": "0x40118b81",
+  "dispatch_decoder": "Xtensa CALL8 raw LOAD bytes",
+  "strong_sntp_precommit_dispatch": true,
+  "physical_device_tested": false
+}
