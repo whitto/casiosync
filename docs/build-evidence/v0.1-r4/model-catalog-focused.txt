@@ -1,6 +1,0 @@
-.
-----------------------------------------------------------------------
-Ran 1 test in 1.026s
-
-OK
-Catalog: 122 pinned entries, exact protocol boundaries, malformed lengths and 100000 bounded fuzz names passed
