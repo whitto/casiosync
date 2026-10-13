@@ -1,0 +1,40 @@
+{
+  "project": "whitto/casiosync",
+  "version": "V0.1",
+  "build": "R4",
+  "source_commit": "3608c26eae004e43c6477295a392ed9106b51b77",
+  "release_published_at_utc": "2026-10-13T04:49:54Z",
+  "results_recorded_at_utc": "2026-10-13T04:53:12.812888+00:00",
+  "command": "bash scripts/test.sh",
+  "runner_exit_code": 0,
+  "host_unittest_groups": 14,
+  "host_unittest_cases": 43,
+  "host_group_case_counts": [
+    4,
+    9,
+    4,
+    4,
+    1,
+    1,
+    2,
+    2,
+    4,
+    3,
+    2,
+    5,
+    1,
+    1
+  ],
+  "standalone_native_sanitizer_suites": [
+    "BX protocol",
+    "Standard TIME protocol",
+    "watch features"
+  ],
+  "browser_regression_group": "passed",
+  "both_board_builds": "passed",
+  "both_actual_elf_panic_gate_and_sntp_checks": "passed",
+  "all_four_github_zip_downloads": "verified HTTP200, exact immutable tag inventory and bytes",
+  "physical_boards_tested": false,
+  "physical_new_watch_models_and_features_tested": false,
+  "test_log_sha256": "3d1c018b436ce439b86710d7af8c5b0be316b4c6e0e1ab87ea41bf92a1b86811"
+}

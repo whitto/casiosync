@@ -1,0 +1,72 @@
+{
+  "full": {
+    "requested_url": "https://github.com/whitto/casiosync/archive/refs/tags/v0.1-r4.zip",
+    "final_url": "https://codeload.github.com/whitto/casiosync/zip/refs/tags/v0.1-r4",
+    "http_status": 200,
+    "tls_verified": true,
+    "bytes": 21685587,
+    "sha256": "09856e324be8d572f77a836b67b1afbd1131e2e0127ff77fed9b92695ba730fc",
+    "download": "/tmp/casiosync-r4-source-full.zip",
+    "tag": "v0.1-r4",
+    "commit": "3608c26eae004e43c6477295a392ed9106b51b77",
+    "file_count": 649,
+    "all_bytes_match_immutable_tag": true,
+    "all_inventory_matches_immutable_tag": true,
+    "zip_crc_verified": true
+  },
+  "arduino": {
+    "requested_url": "https://github.com/whitto/casiosync/archive/refs/tags/arduino-v0.1-r4.zip",
+    "final_url": "https://codeload.github.com/whitto/casiosync/zip/refs/tags/arduino-v0.1-r4",
+    "http_status": 200,
+    "tls_verified": true,
+    "bytes": 1821275,
+    "sha256": "5b6520c310658b2e75600e27dbbb9ec9d916a7d606fc9fab52fa551e74c8acd0",
+    "download": "/tmp/casiosync-r4-source-arduino.zip",
+    "tag": "arduino-v0.1-r4",
+    "commit": "fcfbed8d4ce71dee2491301bf009ad51a837085f",
+    "file_count": 530,
+    "all_bytes_match_immutable_tag": true,
+    "all_inventory_matches_immutable_tag": true,
+    "zip_crc_verified": true
+  },
+  "source_inspection": {
+    "firmware_file_count": 17,
+    "companion_header_count": 14,
+    "partitions_in_both": true,
+    "all_arduino_source_library_and_license_bytes_match_full_project": true,
+    "required_library_and_license_markers": [
+      "RadioBoundedWebServer/src/RadioBoundedWebServer.h",
+      "RadioBoundedWebServer/LICENSE-LGPL-2.1.txt",
+      "NimBLE-Arduino/LICENSE",
+      "NimBLE-Arduino/NOTICE",
+      "NimBLE-Arduino/README_RADIOCLOCK.md",
+      "RadioCrashDumpGate/src/RadioCrashDumpGate.h",
+      "RadioCrashDumpGate/src/esp32/README.md",
+      "RadioCrashDumpGate/src/esp32c3/README.md",
+      "RadioCrashDumpGate/library.properties",
+      "licenses/gshock_api-MIT.txt"
+    ],
+    "crash_gate_c3_linker_marker_present": true,
+    "readme_screenshot_reference_count": 4,
+    "readme_screenshot_references": [
+      "docs/build-evidence/v0.1/overview-desktop.png",
+      "docs/build-evidence/v0.1/watches-desktop.png",
+      "docs/build-evidence/v0.1/watch-settings-desktop.png",
+      "docs/build-evidence/v0.1/alarms-desktop.png"
+    ],
+    "all_readme_screenshot_references_are_present_valid_png": true,
+    "preview_png_artifacts": [
+      "docs/build-evidence/v0.1/alarms-desktop.png",
+      "docs/build-evidence/v0.1/overview-desktop.png",
+      "docs/build-evidence/v0.1/overview-phone.png",
+      "docs/build-evidence/v0.1/watch-settings-desktop.png",
+      "docs/build-evidence/v0.1/watches-desktop.png"
+    ],
+    "all_five_preview_png_artifacts_present_valid_png": true,
+    "credits_and_original_notices_present": true,
+    "full_source_revision": "V0.1 R4",
+    "full_zip_contains_only_current_compiled_revision": [
+      "V0.1-R4"
+    ]
+  }
+}

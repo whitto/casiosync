@@ -100,7 +100,7 @@ A fresh [embedded reliability review](docs/V0.1-review.md) covers bounded memory
 
 The [R4 follow-up review](docs/V0.1-R4-review.md) also covers the battery deadline fixture, package provenance and unsupported-control visibility correction.
 
-The full suite runs **after publication**, following the requested release order, and its result is then recorded in release notes. Physical board/watch and long-run acceptance remain pending. See [release notes](docs/V0.1-R4-release-notes.md) for the current actual validation status.
+The full suite ran **after R4 publication**, following the requested release order, and passed: **43 host-test cases, three native sanitizer suites and browser regressions**. Both board builds and actual ELF checks passed, and all four GitHub ZIPs were independently verified against their tags. [Recorded results](docs/build-evidence/v0.1-r4/results.json) and [release notes](https://github.com/whitto/casiosync/releases/tag/v0.1-r4) provide the evidence. Physical board/watch and long-run acceptance remain pending.
 
 ## Credits
 

@@ -1,0 +1,110 @@
+PASS CasioSync V0.1 R4: bounded UI asset 29357 bytes, 173 DOM IDs, 9 routes; no LF API/code; 4 MB partitions
+.PASS: NimBLE-Arduino 2.5.1-radioclock.1, 475 upstream files, 9 documented source changes
+...
+----------------------------------------------------------------------
+Ran 4 tests in 0.916s
+
+OK
+Scan coordinator scenario passed: queued-start
+Scan coordinator scenario passed: queued-stop
+Scan coordinator scenario passed: start-timeout
+Scan coordinator scenario passed: late-stop
+Scan coordinator scenario passed: failed-stop
+Scan coordinator scenario passed: admission-changes
+Scan coordinator scenario passed: start-failure
+Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: start-failure
+.Scan coordinator scenario passed: failed-stop
+.Scan coordinator scenario passed: admission-changes
+.Scan coordinator scenario passed: late-stop
+.Scan coordinator scenario passed: queued-start
+.Scan coordinator scenario passed: queued-stop
+.Scan coordinator scenario passed: start-timeout
+.
+----------------------------------------------------------------------
+Ran 9 tests in 7.989s
+
+OK
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+..Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.
+----------------------------------------------------------------------
+Ran 4 tests in 1.005s
+
+OK
+...PASS: RadioBoundedWebServer 3.3.12-radioclock.1, 28 verified source/metadata files
+.
+----------------------------------------------------------------------
+Ran 4 tests in 3.975s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.474s
+
+OK
+Brisbane calendar-day quota: midnight, reboot, disable/re-enable, failed attempt and clock rollback passed
+Compact 168-byte snapshot preserves counters, UTC timestamps and watch identity; every single-bit corruption rejected
+Malformed schema, epoch, quota, profile, protocol and address fields rejected; unset profiles retained
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.816s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.811s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 1.175s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 1.538s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 4.100s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.903s
+
+OK
+.Captured GW-BX5600 battery mapping: 60% and 100%; strict packet validation and clamped endpoints passed
+.Battery notification channel, fragmented reply, 1.5s wait budget, cancellation and overflow guards passed
+.Real optional battery GET precedes SP/TIME; unsupported and failed reads preserve time, cancel/disconnect abort, and fresh TIME follows optional work
+.Battery readings remain isolated by profile, binding and protocol; read failures retain last samples, replacement clears them, and zero is valid
+.
+----------------------------------------------------------------------
+Ran 5 tests in 3.727s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 1.553s
+
+OK
+Actual optional-feature executor: identity/model guards, read/merge/readback, unchanged bytes, failure paths, TIME/font reserves and rollover passed
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.616s
+
+OK
+Catalog: 122 pinned entries, exact protocol boundaries, malformed lengths and 100000 bounded fuzz names passed
+Casio BX protocol capture and malformed-packet checks passed
+Standard TIME: official DW/MTG capture vectors, civil timezone, all fractions and invalid samples passed
+Watch features: defaults, captured layouts, selective readback, reserved bytes, aliasing and malformed packet checks passed
+PASS CasioSync browser regressions: seven-page sidebar, daily BT/tz edits, per-profile alarm drafts/saves/failure rollback, analogue capability guard, Wi-Fi schedule, independent flash toggles, h/m/s uptime and phone layout
