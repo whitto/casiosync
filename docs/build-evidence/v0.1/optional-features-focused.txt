@@ -1,6 +1,0 @@
-.
-----------------------------------------------------------------------
-Ran 1 test in 1.994s
-
-OK
-Actual optional-feature executor: identity/model guards, read/merge/readback, unchanged bytes, failure paths, TIME/font reserves and rollover passed
