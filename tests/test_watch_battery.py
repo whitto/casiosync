@@ -308,6 +308,8 @@ size_t bxRequest(const uint8_t*, size_t, uint8_t header, size_t minimum,
 }
 void resetBattery() {
   reset(); btService = &service; btSetChar = &allFeatures; btSpData = &spData;
+  // A production sync owns a finite active transaction before reading battery.
+  btTransactionActive.store(true); btTransactionStartedMillis.store(tick);
   batteryRequest.noResponse = allFeatures.notify = allFeatures.subscribeOk = true;
   allFeatures.indicate = false; allFeatures.subscriptions = 0;
   missingRequest = disconnectDuringDiscovery = failRequest = timeoutReply = wrongChannel = false;
@@ -393,6 +395,21 @@ int main() {
   assert(!readBluetoothWatchBattery() && requests == 0);
   resetBattery(); btLastWatchName = ""; btProfileName[0] = "CASIO GW-BX5600";
   assert(readBluetoothWatchBattery()); // A verified existing binding supplies a missing advertised name.
+  // Exercise the actual remaining-deadline guard. Low-budget optional reads
+  // are skipped while the unchanged required SP/TIME handshake can still run.
+  resetBattery(); btTransactionActive.store(false);
+  assert(!readBluetoothWatchBattery() && requests == 0);
+  resetBattery(); tick = BT_TRANSACTION_DEADLINE_MS - 19999;
+  assert(!readBluetoothWatchBattery() && requests == 0);
+  assert(performGShockBX5600Sync() && requests == 0 && timeWrites == 1);
+  assert((order == std::vector<char>{'S', 'S', 'S', 'O', 'C', 'T'}));
+  resetBattery(); tick = BT_TRANSACTION_DEADLINE_MS - 20000;
+  assert(readBluetoothWatchBattery() && requests == 1 && elapsed == 300);
+  resetBattery(); tick = UINT32_MAX - 100; btTransactionStartedMillis.store(tick);
+  assert(readBluetoothWatchBattery() && requests == 1 && elapsed == 300);
+  assert(btTransactionRemainingMs() == BT_TRANSACTION_DEADLINE_MS - 300);
+  resetBattery(); tick = BT_TRANSACTION_DEADLINE_MS - 500; fontDelay = true;
+  assert(!performGShockBX5600Sync() && requests == 0 && timeWrites == 0 && disconnects == 1);
   std::puts("Real optional battery GET precedes SP/TIME; unsupported and failed reads preserve time, cancel/disconnect abort, and fresh TIME follows optional work");
 }
 '''
@@ -504,7 +521,8 @@ class WatchBatteryTest(unittest.TestCase):
         functions = functions.replace('static bool readBluetoothWatchBattery(',
                                       copy_wrapper + 'static bool readBluetoothWatchBattery(', 1)
         return '\n'.join([NOTIFICATION_MOCKS, string_mock, '\n'.join(captures),
-                          TRANSPORT_MOCKS, workflow.transaction_deadline_source(source), functions, driver])
+                          workflow.transaction_deadline_source(source), TRANSPORT_MOCKS,
+                          workflow.extract_function(source, 'btTransactionRemainingMs'), functions, driver])
 
     def test_optional_read_failures_and_fresh_time_session(self):
         self.run_cpp(self.transport_source(TRANSPORT_DRIVER))

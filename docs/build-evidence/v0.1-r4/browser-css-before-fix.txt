@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: analogue optional settings hidden: {"profile":2,"manual":2,"caps":{"basic_mask":0,"alarms":false,"hourly_chime":false,"timer":false,"timer_max_seconds":3600,"auto_adjust":false},"watch":"CASIO MTG-B3000","masterHidden":true,"masterDisplay":"flex"}
+
+false !== true
+
+    at /workspace/casiosync/scripts/test-ui-browser.cjs:87:11 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

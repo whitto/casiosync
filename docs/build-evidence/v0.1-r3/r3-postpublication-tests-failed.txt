@@ -1,0 +1,124 @@
+PASS CasioSync V0.1 R3: bounded UI asset 29343 bytes, 173 DOM IDs, 9 routes; no LF API/code; 4 MB partitions
+.PASS: NimBLE-Arduino 2.5.1-radioclock.1, 475 upstream files, 9 documented source changes
+...
+----------------------------------------------------------------------
+Ran 4 tests in 0.898s
+
+OK
+Scan coordinator scenario passed: queued-start
+Scan coordinator scenario passed: queued-stop
+Scan coordinator scenario passed: start-timeout
+Scan coordinator scenario passed: late-stop
+Scan coordinator scenario passed: failed-stop
+Scan coordinator scenario passed: admission-changes
+Scan coordinator scenario passed: start-failure
+Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: start-failure
+.Scan coordinator scenario passed: failed-stop
+.Scan coordinator scenario passed: admission-changes
+.Scan coordinator scenario passed: late-stop
+.Scan coordinator scenario passed: queued-start
+.Scan coordinator scenario passed: queued-stop
+.Scan coordinator scenario passed: start-timeout
+.
+----------------------------------------------------------------------
+Ran 9 tests in 7.435s
+
+OK
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+..Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.
+----------------------------------------------------------------------
+Ran 4 tests in 1.148s
+
+OK
+...PASS: RadioBoundedWebServer 3.3.12-radioclock.1, 28 verified source/metadata files
+.
+----------------------------------------------------------------------
+Ran 4 tests in 3.305s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.435s
+
+OK
+Brisbane calendar-day quota: midnight, reboot, disable/re-enable, failed attempt and clock rollback passed
+Compact 168-byte snapshot preserves counters, UTC timestamps and watch identity; every single-bit corruption rejected
+Malformed schema, epoch, quota, profile, protocol and address fields rejected; unset profiles retained
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.653s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.785s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.882s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 1.499s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 3.572s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.967s
+
+OK
+.Captured GW-BX5600 battery mapping: 60% and 100%; strict packet validation and clamped endpoints passed
+.Battery notification channel, fragmented reply, 1.5s wait budget, cancellation and overflow guards passed
+./tmp/casiosync-battery-4hmg9p5g/test.cpp: In function ‘bool readBluetoothWatchBattery()’:
+/tmp/casiosync-battery-4hmg9p5g/test.cpp:314:7: error: ‘btTransactionRemainingMs’ was not declared in this scope
+  314 |   if (btTransactionRemainingMs()<20000) {
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+E/tmp/casiosync-battery-8tg01lnl/test.cpp: In function ‘bool readBluetoothWatchBattery()’:
+/tmp/casiosync-battery-8tg01lnl/test.cpp:314:7: error: ‘btTransactionRemainingMs’ was not declared in this scope
+  314 |   if (btTransactionRemainingMs()<20000) {
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+E
+======================================================================
+ERROR: test_optional_read_failures_and_fresh_time_session (__main__.WatchBatteryTest.test_optional_read_failures_and_fresh_time_session)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/casiosync/tests/test_watch_battery.py", line 510, in test_optional_read_failures_and_fresh_time_session
+    self.run_cpp(self.transport_source(TRANSPORT_DRIVER))
+  File "/workspace/casiosync/tests/test_watch_battery.py", line 451, in run_cpp
+    subprocess.run(['g++', '-std=c++17', '-Wall', '-Wextra', '-Werror',
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['g++', '-std=c++17', '-Wall', '-Wextra', '-Werror', '-fsanitize=address,undefined', '-fno-omit-frame-pointer', '-no-pie', '-I', '/workspace/casiosync/firmware/CasioSync_V0_1', '/tmp/casiosync-battery-4hmg9p5g/test.cpp', '-o', '/tmp/casiosync-battery-4hmg9p5g/test']' returned non-zero exit status 1.
+
+======================================================================
+ERROR: test_profile_binding_and_last_known_sample (__main__.WatchBatteryTest.test_profile_binding_and_last_known_sample)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/casiosync/tests/test_watch_battery.py", line 513, in test_profile_binding_and_last_known_sample
+    self.run_cpp(self.transport_source(STATE_DRIVER))
+  File "/workspace/casiosync/tests/test_watch_battery.py", line 451, in run_cpp
+    subprocess.run(['g++', '-std=c++17', '-Wall', '-Wextra', '-Werror',
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['g++', '-std=c++17', '-Wall', '-Wextra', '-Werror', '-fsanitize=address,undefined', '-fno-omit-frame-pointer', '-no-pie', '-I', '/workspace/casiosync/firmware/CasioSync_V0_1', '/tmp/casiosync-battery-8tg01lnl/test.cpp', '-o', '/tmp/casiosync-battery-8tg01lnl/test']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.188s
+
+FAILED (errors=2)

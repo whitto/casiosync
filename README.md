@@ -1,4 +1,4 @@
-# CasioSync V0.1 R3
+# CasioSync V0.1 R4
 
 CasioSync is an ESP32 Bluetooth companion for Casio watches. It obtains trusted time over Wi-Fi/NTP, listens for watch connections, delivers the selected local time, and can apply optional watch preferences during that connection.
 
@@ -24,13 +24,13 @@ These screenshots use sample browser data; the alarm example shows an unsaved dr
 
 ## Downloads
 
-- [Complete project ZIP](https://github.com/whitto/casiosync/archive/refs/tags/v0.1-r3.zip)
-- [Arduino sketch and source libraries ZIP](https://github.com/whitto/casiosync/archive/refs/tags/arduino-v0.1-r3.zip)
-- [Compiled Node32s package](https://github.com/whitto/casiosync/archive/refs/tags/node32s-v0.1-r3.zip)
-- [Compiled ESP32-C3 SuperMini package](https://github.com/whitto/casiosync/archive/refs/tags/esp32c3-v0.1-r3.zip)
-- [Release notes](https://github.com/whitto/casiosync/releases/tag/v0.1-r3)
+- [Complete project ZIP](https://github.com/whitto/casiosync/archive/refs/tags/v0.1-r4.zip)
+- [Arduino sketch and source libraries ZIP](https://github.com/whitto/casiosync/archive/refs/tags/arduino-v0.1-r4.zip)
+- [Compiled Node32s package](https://github.com/whitto/casiosync/archive/refs/tags/node32s-v0.1-r4.zip)
+- [Compiled ESP32-C3 SuperMini package](https://github.com/whitto/casiosync/archive/refs/tags/esp32c3-v0.1-r4.zip)
+- [Release notes](https://github.com/whitto/casiosync/releases/tag/v0.1-r4)
 
-Compiled images, flashing instructions, matching compressed ELF symbols and SHA256 manifests are also under `compiled/V0.1-R3/`. Both packages target **4 MB flash** and include bootloader, partition table and application images. Use the package for your chip. The C3 package uses native USB CDC and the SuperMini's **GPIO8 active-low blue LED**; Node32s uses **GPIO2 active-high**.
+Compiled images, flashing instructions, matching compressed ELF symbols and SHA256 manifests are also under `compiled/V0.1-R4/`. Both packages target **4 MB flash** and include bootloader, partition table and application images. Use the package for your chip. The C3 package uses native USB CDC and the SuperMini's **GPIO8 active-low blue LED**; Node32s uses **GPIO2 active-high**.
 
 ## Watch synchronization
 
@@ -98,7 +98,9 @@ The package script checks chip identity and the actual application partition, ke
 
 A fresh [embedded reliability review](docs/V0.1-review.md) covers bounded memory, callback lifetimes, failure/rollback handling, Wi-Fi/NTP recovery, persistent choices, flash wear and both board targets. Focused captured-packet/fault checks and a rendered desktop/phone review precede publication. Actual ELF checks verify the default-Off panic gate and strong SNTP hook on each architecture.
 
-The full suite runs **after publication**, following the requested release order, and its result is then recorded in release notes. Physical board/watch and long-run acceptance remain pending. See [release notes](docs/V0.1-R3-release-notes.md) for the current actual validation status.
+The [R4 follow-up review](docs/V0.1-R4-review.md) also covers the battery deadline fixture, package provenance and unsupported-control visibility correction.
+
+The full suite runs **after publication**, following the requested release order, and its result is then recorded in release notes. Physical board/watch and long-run acceptance remain pending. See [release notes](docs/V0.1-R4-release-notes.md) for the current actual validation status.
 
 ## Credits
 
