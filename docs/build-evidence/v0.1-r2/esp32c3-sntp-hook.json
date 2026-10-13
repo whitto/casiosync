@@ -1,0 +1,11 @@
+{
+  "architecture": "esp32c3",
+  "elf": "/workspace/.radioclock-tools/output/CasioSync_V0_1/esp32c3/CasioSync_V0_1.ino.elf",
+  "elf_sha256": "d499cfb29ef29aa4baae6ca32b702fa292dd53abf630b002e04f162e04434a87",
+  "strong_hook_address": "0x42005d10",
+  "sdk_caller_address": "0x4204d354",
+  "dispatch_address": "0x4204d360",
+  "dispatch_decoder": "RV32IMC instruction boundaries",
+  "strong_sntp_precommit_dispatch": true,
+  "physical_device_tested": false
+}

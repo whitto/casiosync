@@ -1,4 +1,4 @@
-# CasioSync V0.1 R1
+# CasioSync V0.1 R2
 
 CasioSync is an ESP32 Bluetooth companion for Casio watches. It obtains trusted time over Wi-Fi/NTP, listens for watch connections, delivers the selected local time, and can apply optional watch preferences during that connection.
 
@@ -8,15 +8,29 @@ This is a separate project derived from [Time Transmitter V4.16](https://github.
 
 Browser preview with sample watch/status data.
 
+## Watch settings and alarms
+
+The Watches page includes per-watch connection, font, battery and optional settings controls.
+
+![CasioSync Watches page](docs/build-evidence/v0.1/watches-desktop.png)
+
+![Watch display, sound and power settings](docs/build-evidence/v0.1/watch-settings-desktop.png)
+
+Enable alarm changes, choose the five alarm times and switches, then save to apply them during the next sync.
+
+![Watch alarm settings](docs/build-evidence/v0.1/alarms-desktop.png)
+
+These screenshots use sample browser data; the alarm example shows an unsaved draft. Optional settings default Off.
+
 ## Downloads
 
-- [Complete project ZIP](https://github.com/whitto/casiosync/archive/refs/tags/v0.1.zip)
-- [Arduino sketch and source libraries ZIP](https://github.com/whitto/casiosync/archive/refs/tags/arduino-v0.1.zip)
-- [Compiled Node32s package](https://github.com/whitto/casiosync/releases/download/v0.1/CasioSync_V0.1_R1_Node32s.zip)
-- [Compiled ESP32-C3 SuperMini package](https://github.com/whitto/casiosync/releases/download/v0.1/CasioSync_V0.1_R1_ESP32-C3_SuperMini.zip)
-- [Release notes](https://github.com/whitto/casiosync/releases/tag/v0.1)
+- [Complete project ZIP](https://github.com/whitto/casiosync/archive/refs/tags/v0.1-r2.zip)
+- [Arduino sketch and source libraries ZIP](https://github.com/whitto/casiosync/archive/refs/tags/arduino-v0.1-r2.zip)
+- [Compiled Node32s package](https://github.com/whitto/casiosync/archive/refs/tags/node32s-v0.1-r2.zip)
+- [Compiled ESP32-C3 SuperMini package](https://github.com/whitto/casiosync/archive/refs/tags/esp32c3-v0.1-r2.zip)
+- [Release notes](https://github.com/whitto/casiosync/releases/tag/v0.1-r2)
 
-Compiled images, flashing instructions, matching compressed ELF symbols and SHA256 manifests are also under `compiled/V0.1-R1/`. Both packages target **4 MB flash** and include bootloader, partition table and application images. Use the package for your chip. The C3 package uses native USB CDC and the SuperMini's **GPIO8 active-low blue LED**; Node32s uses **GPIO2 active-high**.
+Compiled images, flashing instructions, matching compressed ELF symbols and SHA256 manifests are also under `compiled/V0.1-R2/`. Both packages target **4 MB flash** and include bootloader, partition table and application images. Use the package for your chip. The C3 package uses native USB CDC and the SuperMini's **GPIO8 active-low blue LED**; Node32s uses **GPIO2 active-high**.
 
 ## Watch synchronization
 
@@ -84,7 +98,7 @@ The package script checks chip identity and the actual application partition, ke
 
 A fresh [embedded reliability review](docs/V0.1-review.md) covers bounded memory, callback lifetimes, failure/rollback handling, Wi-Fi/NTP recovery, persistent choices, flash wear and both board targets. Focused captured-packet/fault checks and a rendered desktop/phone review precede publication. Actual ELF checks verify the default-Off panic gate and strong SNTP hook on each architecture.
 
-The full suite runs **after publication**, following the requested release order, and its result is then recorded in release notes. Physical board/watch and long-run acceptance remain pending. See [release notes](docs/V0.1-release-notes.md) for the current actual validation status.
+The full suite runs **after publication**, following the requested release order, and its result is then recorded in release notes. Physical board/watch and long-run acceptance remain pending. See [release notes](docs/V0.1-R2-release-notes.md) for the current actual validation status.
 
 ## Credits
 

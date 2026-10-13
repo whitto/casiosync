@@ -1,0 +1,69 @@
+PASS CasioSync V0.1 R1: bounded UI asset 29341 bytes, 173 DOM IDs, 9 routes; no LF API/code; 4 MB partitions
+.PASS: NimBLE-Arduino 2.5.1-radioclock.1, 475 upstream files, 9 documented source changes
+...
+----------------------------------------------------------------------
+Ran 4 tests in 0.841s
+
+OK
+Scan coordinator scenario passed: queued-start
+Scan coordinator scenario passed: queued-stop
+Scan coordinator scenario passed: start-timeout
+Scan coordinator scenario passed: late-stop
+Scan coordinator scenario passed: failed-stop
+Scan coordinator scenario passed: admission-changes
+Scan coordinator scenario passed: start-failure
+Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: cycles
+.Scan coordinator scenario passed: start-failure
+.Scan coordinator scenario passed: failed-stop
+.Scan coordinator scenario passed: admission-changes
+.Scan coordinator scenario passed: late-stop
+.Scan coordinator scenario passed: queued-start
+.Scan coordinator scenario passed: queued-stop
+.Scan coordinator scenario passed: start-timeout
+.
+----------------------------------------------------------------------
+Ran 9 tests in 6.947s
+
+OK
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+..Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+Actual gate: default Off, enabled delegation and Off suppression passed
+Early boot remains Off before saved configuration is restored
+.
+----------------------------------------------------------------------
+Ran 4 tests in 1.041s
+
+OK
+...PASS: RadioBoundedWebServer 3.3.12-radioclock.1, 28 verified source/metadata files
+.
+----------------------------------------------------------------------
+Ran 4 tests in 3.324s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.440s
+
+OK
+Brisbane calendar-day quota: midnight, reboot, disable/re-enable, failed attempt and clock rollback passed
+Compact 168-byte snapshot preserves counters, UTC timestamps and watch identity; every single-bit corruption rejected
+Malformed schema, epoch, quota, profile, protocol and address fields rejected; unset profiles retained
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.718s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.802s
+
+OK
+  File "/workspace/casiosync/tests/test_watch_options_storage.py", line 81
+    self.assertLess(handler.index('if (!saveWatchOptions())'),handler.index('server.send(200')))
+                                                                                               ^
+SyntaxError: unmatched ')'

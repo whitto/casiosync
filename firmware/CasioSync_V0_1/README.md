@@ -1,4 +1,4 @@
-# CasioSync V0.1 R1 — Arduino sketch
+# CasioSync V0.1 R2 — Arduino sketch
 
 Open `CasioSync_V0_1.ino`; keep all companion `.h` files and `partitions.csv` in this folder. The web UI is embedded, so no separate filesystem/UI upload is required.
 

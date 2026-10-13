@@ -60,6 +60,13 @@ const {chromium}=require('playwright');
   assert.equal(await page.locator('#watchFeaturesEnabled').isChecked(),false);
   assert.equal(await page.locator('#watchAlarmsEnabled').isDisabled(),true);
   await page.screenshot({path:path.join(__dirname,'../docs/build-evidence/v0.1/watches-desktop.png'),fullPage:true});
+  // Show a sample alarm draft for README screenshots without saving it.
+  await page.locator('#watchFeaturesEnabled').check();await page.locator('#watchAlarmsEnabled').check();
+  await page.locator('#watchAlarmTime0').fill('06:45');await page.locator('#watchAlarmTime0').dispatchEvent('change');await page.locator('#watchAlarmOn0').check();
+  await page.locator('#watchBasicGroup').screenshot({path:path.join(__dirname,'../docs/build-evidence/v0.1/watch-settings-desktop.png')});
+  await page.locator('#watchAlarmGroup').screenshot({path:path.join(__dirname,'../docs/build-evidence/v0.1/alarms-desktop.png')});
+  await page.evaluate(()=>{watchFeatureDrafts[0]=null;watchFeatureShownProfile=-1;renderWatchFeatures()});
+  assert.equal(await page.locator('#watchFeaturesEnabled').isChecked(),false,'screenshot draft reset');
   if(!renderOnly){
    await page.evaluate(async()=>{await setBtAlwaysWait(false)});assert.equal(config.bt_always_wait,false);
    await page.evaluate(async()=>{await setBtSlot(2,false)});assert.equal(config.bt_times[2].enabled,false);
@@ -75,7 +82,7 @@ const {chromium}=require('playwright');
    const before=structuredClone(profiles[0].feature_desired);rejectFeature=true;
    await page.locator('#watchAlarmTime0').fill('07:45');await page.locator('#watchAlarmTime0').dispatchEvent('change');await page.evaluate(async()=>{await saveWatchFeatures()});assert.deepEqual(profiles[0].feature_desired,before);
    assert.equal(await page.locator('#watchAlarmTime0').inputValue(),'07:45','failed-save draft retained');
-   await page.evaluate(async()=>{await setBtManualProfile(2)});assert.equal(await page.locator('#watchFeaturesEnabled').isDisabled(),true,'analogue optional settings blocked');
+   await page.evaluate(async()=>{await setBtManualProfile(2)});assert.equal(await page.locator('#watchFeaturesMasterRow').isHidden(),true,'analogue optional settings hidden');assert.equal(await page.locator('#watchFeaturesSave').isHidden(),true,'no unsupported settings save control');
    await page.evaluate(async()=>{await setBtManualProfile(0)});
    await page.evaluate(async()=>{showView('settings');await setBtHistoryPersist(false);await setCrashDumpEnabled(true)});assert.equal(config.bt_history_persist,false);assert.equal(config.crash_dump_enabled,true);
    await page.locator('#wifiAccessStart').fill('23:00');await page.locator('#wifiAccessStart').dispatchEvent('input');await page.locator('#wifiAccessEnd').fill('01:00');await page.locator('#wifiAccessEnd').dispatchEvent('input');await page.locator('#wifiAccessEnabled').check();await page.waitForFunction(()=>!document.getElementById('wifiAccessSave').disabled);assert.equal(config.wifi_access_start,1380);assert.equal(config.wifi_access_end,60);assert.equal(config.wifi_power_mode,1);

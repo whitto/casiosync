@@ -78,6 +78,6 @@ class WatchOptionsStorageTest(unittest.TestCase):
         for rollback in ('btFeatureDesired[profile]=previous','memcpy(btFeatureBoundAddress[profile],previousAddress',
                          'btFeatureBoundProtocol[profile]=previousProtocol'):
             self.assertIn(rollback,handler)
-        self.assertLess(handler.index('if (!saveWatchOptions())'),handler.index('server.send(200')))
+        self.assertLess(handler.index('if (!saveWatchOptions())'),handler.index('server.send(200'))
 
 if __name__=='__main__':unittest.main()

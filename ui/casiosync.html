@@ -112,7 +112,7 @@ body{background:radial-gradient(ellipse at 85% 0,#112b48 0,#061827 38%,var(--bg)
 </defs></svg>
 <div class="shell">
 <header class="mast">
- <div class="brand"><div class="logo"><svg class="icon" aria-hidden="true"><use href="#i-watch"/></svg></div><div><h1>CasioSync</h1><small id="fw">V0.1 R1</small></div></div>
+ <div class="brand"><div class="logo"><svg class="icon" aria-hidden="true"><use href="#i-watch"/></svg></div><div><h1>CasioSync</h1><small id="fw">V0.1 R2</small></div></div>
  <div class="connection"><span id="liveDot" class="dot"></span><span class="text" id="liveText">Connecting…</span><a id="projectHeaderLink" class="project-link" href="https://github.com/whitto/casiosync" target="_blank" rel="noopener noreferrer">GitHub</a></div>
 </header>
 
@@ -228,7 +228,7 @@ body{background:radial-gradient(ellipse at 85% 0,#112b48 0,#061827 38%,var(--bg)
  </div>
 </section>
 <section class="view" id="view-about">
- <h2 class="page-heading">About</h2><div class="grid"><article class="card wide" id="about-panel"><div class="cardhead"><div><h2>CasioSync V0.1 R1</h2><p class="sub">An ESP32 Bluetooth time-sync companion for Casio watches. Wi-Fi supplies NTP time and a local web interface; each watch profile has its own pairing, protocol and optional display-font setting.</p><p class="sub">V0.1 R1 · 13 October 2026 · Derived from Time Transmitter V4.16 R1.</p><p class="sub"><a id="projectAboutLink" class="project-link" href="https://github.com/whitto/casiosync" target="_blank" rel="noopener noreferrer">CasioSync on GitHub</a></p></div></div><div class="divider"></div><h2>Credits</h2><p class="sub">Built on whitto's Time Transmitter / RadioClock work. Bluetooth protocol work and examples draw on casio-watch, gshock-api and Casio watch community projects; exact upstream references and library credits are listed in the repository README.</p><p class="sub">The original Time Transmitter lineage includes nisejjy by tarohs and ClockWaveXmitter improvements by 5Breeze. Their authorship is retained in the project history and credits.</p><p class="sub">CasioSync is an independent community project and is not affiliated with Casio. A successful Bluetooth time-write acknowledgement is delivery evidence; the ESP32 cannot verify the watch's displayed time.</p></article></div>
+ <h2 class="page-heading">About</h2><div class="grid"><article class="card wide" id="about-panel"><div class="cardhead"><div><h2>CasioSync V0.1 R2</h2><p class="sub">An ESP32 Bluetooth time-sync companion for Casio watches. Wi-Fi supplies NTP time and a local web interface; each watch profile has its own pairing, protocol and optional display-font setting.</p><p class="sub">V0.1 R2 · 13 October 2026 · Derived from Time Transmitter V4.16 R1.</p><p class="sub"><a id="projectAboutLink" class="project-link" href="https://github.com/whitto/casiosync" target="_blank" rel="noopener noreferrer">CasioSync on GitHub</a></p></div></div><div class="divider"></div><h2>Credits</h2><p class="sub">Built on whitto's Time Transmitter / RadioClock work. Bluetooth protocol work and examples draw on casio-watch, gshock-api and Casio watch community projects; exact upstream references and library credits are listed in the repository README.</p><p class="sub">The original Time Transmitter lineage includes nisejjy by tarohs and ClockWaveXmitter improvements by 5Breeze. Their authorship is retained in the project history and credits.</p><p class="sub">CasioSync is an independent community project and is not affiliated with Casio. A successful Bluetooth time-write acknowledgement is delivery evidence; the ESP32 cannot verify the watch's displayed time.</p></article></div>
 </section>
 </main>
 </div>
@@ -397,7 +397,7 @@ function renderStatus(d,mergeSettings=true){
  $('liveDot').className='dot good';$('liveText').textContent='Live';
  const watchTime=d.bt_time||d.bt_local_time||'',parts=watchTime.match(/^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2}:\d{2})/),zone=d.bt_timezone||config.bt_timezone||'Australia/Brisbane',offset=Number(d.bt_time_offset_minutes??config.bt_time_offset_minutes??0);
  $('time').textContent=parts?parts[2]:'--:--:--';$('date').textContent=displayDate(parts?parts[1]:'');
- $('fw').textContent=d.firmware_version?`${d.firmware_version}${d.firmware_build?' '+d.firmware_build:''}`:'V0.1 R1';
+ $('fw').textContent=d.firmware_version?`${d.firmware_version}${d.firmware_build?' '+d.firmware_build:''}`:'V0.1 R2';
  $('heroZone').textContent=(zone==='Australia/Brisbane'?'Brisbane, Australia (AEST, UTC+10)':zone.replaceAll('_',' '))+(offset?` · offset ${offset>0?'+':''}${offset} min`:'');
  $('infoLocalTime').textContent=parts?parts[2]:'--:--:--';$('infoTimezone').textContent=zone+(offset?` · ${offset>0?'+':''}${offset} min`:'');
  $('homeBtTime').textContent=watchTime||'—';$('homeBtZone').textContent=zone;$('homeBtState').textContent=d.bt_state||'On demand';
