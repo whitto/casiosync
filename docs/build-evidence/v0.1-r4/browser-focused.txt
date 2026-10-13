@@ -1,1 +1,0 @@
-PASS CasioSync browser regressions: seven-page sidebar, daily BT/tz edits, per-profile alarm drafts/saves/failure rollback, analogue capability guard, Wi-Fi schedule, independent flash toggles, h/m/s uptime and phone layout

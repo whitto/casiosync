@@ -1,8 +1,0 @@
-esptool v5.3.1
-SHA digest in image updated.
-Wrote 0x162080 bytes to file '/workspace/casiosync/compiled/V0.1-R4/node32s/factory.bin', ready to flash to offset 0x0.
-esptool v5.3.1
-SHA digest in image updated.
-Wrote 0x171d70 bytes to file '/workspace/casiosync/compiled/V0.1-R4/esp32c3/factory.bin', ready to flash to offset 0x0.
-Packaged node32s: 1384576 application bytes; /tmp/casiosync-release-assets/CasioSync_V0.1_R4_Node32s.zip
-Packaged esp32c3: 1449328 application bytes; /tmp/casiosync-release-assets/CasioSync_V0.1_R4_ESP32-C3_SuperMini.zip

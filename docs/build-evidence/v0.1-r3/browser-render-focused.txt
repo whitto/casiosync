@@ -1,1 +1,0 @@
-PASS focused CasioSync desktop/watch/phone render; seven-page sidebar, no LF routes, opt-in feature controls
